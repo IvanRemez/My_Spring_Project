@@ -7,10 +7,10 @@ import lombok.Getter;
 import org.springframework.stereotype.Component;
 
 @Getter
-@Component
+@Component  // what Spring is doing: new PC(case, monitor, motherboard);
 public class PC {
 
-    private Case theCase;
+    private Case theCase;   // private DellCase case; <- TIGHTLY COUPLED
     private Monitor monitor;
     private Motherboard motherboard;
 
