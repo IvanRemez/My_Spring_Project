@@ -5,7 +5,7 @@ import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-@Data
+@Data       // adds RequiredArgsConstructor - FINAL fields will be added
 @Component
 public class DataStructure extends Model{
 
