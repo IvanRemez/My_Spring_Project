@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Cydeo</title>
+</head>
+<body>
+
+Welcome to Register Page
+
+<div align="center">
+
+<form th:action="@{/mentor/confirm}" method="post" th:object="${mentor}">
+<!--    ^^ links Mentor object (id="mentor") with Registration form-->
+
+    <label>First Name:</label>
+    <input type="text" th:field="*{firstName}"><br>
+<!--    ^^ links First Name input field with Mentor object's firstName field-->
+
+    <label>Last Name:</label>
+    <input type="text" th:field="*{lastName}"><br><br>
+
+    <label>Email:</label>
+    <input type="email" th:field="*{email}"><br><br>
+
+<!--    Checkbox-->
+<!--    th:field is used to define checkbox inputs.-->
+    <label>Graduated:</label>
+    <input type="checkbox" th:field="*{graduated}"><br><br>
+
+<!--    Radio Button Fields-->
+<!--    It is specified in a similar way to non-boolean(multi-valued) checkboxes
+-except they are not multivalued.-->
+    <label>Gender:</label>
+    <input type="radio" value="Male" th:field="*{gender}">Male
+    <input type="radio" value="Female" th:field="*{gender}">Female<br><br>
+
+<!--    Dropdown List-->
+<!--    Select fields have two parts: the <select> tag and its nested <option> tags.-->
+<!--    When creating this kind of field, only the <select> tag has to include a
+th:field attribute, but the th:value attributes in the nested <option> tags will be
+very important because they will provide the means of knowing which is the currently
+selected option.-->
+    <label>Batch Number:</label>
+    <select th:field="*{batch}">
+        <option th:each="theBatch : ${batchList}" th:value="${theBatch}"
+                th:text="${theBatch}"></option>
+    </select><br><br>
+
+    <label>Batch Number:</label>
+    <textarea th:field="*{company}"></textarea><br>
+
+    <button type="submit">Register</button>
+
+</form>
+
+</div>
+
+</body>
+</html>
