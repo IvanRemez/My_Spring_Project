@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Cydeo</title>
+</head>
+<body>
+
+<div align="center">
+
+  Welcome to Employee Register Page
+
+  <form th:object="${employee}">
+
+    <label>First Name</label>
+    <input type="text" th:field="*{firstName}">
+
+    <label>Last Name</label>
+    <input type="text" th:field="*{lastName}">
+
+    <label>Birthday</label>
+    <input type="date" th:field="*{birthday}"><br><br>
+
+    <label>Email</label>
+    <input type="email" th:field="*{email}">
+
+    <label>Password</label>
+    <input type="text" th:field="*{password}"><br><br>
+
+    <label>Address</label>
+    <input type="text" th:field="*{address}"><br><br>
+
+    <label>Address 2</label>
+    <input type="text" th:field="*{address2}"><br><br>
+
+    <label>City</label>
+    <input type="text" th:field="*{city}"><br><br>
+
+    <label>State</label>
+    <select th:field="*{state}">
+      <option th:each="theState : ${stateList}" th:value="${theState}"
+              th:text="${theState}"></option>
+    </select><br><br>
+
+    <label>Zip</label>
+    <input type="text" th:field="*{zip}"><br><br>
+
+    <button type="submit">Register</button>
+
+
+  </form>
+
+</div>
+
+</body>
+</html>
