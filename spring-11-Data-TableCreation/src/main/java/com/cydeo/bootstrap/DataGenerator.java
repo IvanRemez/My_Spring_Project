@@ -38,7 +38,7 @@ public class DataGenerator implements CommandLineRunner {
 // I want to save c1,c2,c3 to DB:
 
         // are there any save methods available?
-        // need to Inject CarRepository to use is save() method
+        // need to Inject CarRepository to use its save() method
 
         carRepository.save(c1);
         carRepository.save(c2);
