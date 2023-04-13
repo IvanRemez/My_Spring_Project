@@ -25,10 +25,17 @@ public class Payment {
     @Enumerated(EnumType.STRING)
     private Status paymentStatus;
 
-    @OneToOne // lets Spring know that One Payment can have only One PaymentDetail
+//    @OneToOne(cascade = CascadeType.ALL)
+    // ^^ lets Spring know that One Payment can have only One PaymentDetail
+    // Cascade(ALL) = any DB actions (save, delete) done to the parent (Payment)
+    // will also be done to the child (PaymentDetail)
+    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinColumn(name = "payment_detail_id")
     // ^^ default name but can change foreign key column this way
     private PaymentDetail paymentDetail;
+
+    @ManyToOne
+    private Merchant merchant;
 
     public Payment(LocalDate createdDate, BigDecimal amount, Status paymentStatus) {
         this.createdDate = createdDate;

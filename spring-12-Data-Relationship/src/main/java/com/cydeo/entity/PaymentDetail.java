@@ -22,6 +22,10 @@ public class PaymentDetail {
     @Column(columnDefinition = "DATE")
     private LocalDate payoutDate;
 
+    @OneToOne(mappedBy = "paymentDetail")
+    // mappedBy - removes payment_id foreign key from payment_details Table
+    private Payment payment;
+
     public PaymentDetail(BigDecimal merchantPayoutAmount, BigDecimal commissionAmount, LocalDate payoutDate) {
         this.merchantPayoutAmount = merchantPayoutAmount;
         this.commissionAmount = commissionAmount;
