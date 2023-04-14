@@ -26,7 +26,7 @@ public class AccountDetails extends BaseEntity {
     @Enumerated(EnumType.STRING)
     private UserRole role;
 
-    @OneToOne(mappedBy = "account_details")
+    @OneToOne(mappedBy = "accountDetails")
     private UserAccount userAccount;
 
 }
