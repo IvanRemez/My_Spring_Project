@@ -1,6 +1,7 @@
 package com.cydeo.entity;
 
 import com.cydeo.enums.UserRole;
+import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -12,8 +13,9 @@ import javax.persistence.OneToOne;
 
 @Entity
 @NoArgsConstructor
-@Getter
-@Setter
+//@Getter
+//@Setter
+@Data
 public class AccountDetails extends BaseEntity {
 
     private String name;

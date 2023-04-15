@@ -21,4 +21,13 @@ public class UserAccount extends BaseEntity {
     @OneToOne(fetch = FetchType.LAZY)
     private AccountDetails accountDetails;
 
+    @Override
+    public String toString() {
+        return "User{" +
+                "email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", username='" + username + '\'' +
+                '}';
+    }
+
 }
