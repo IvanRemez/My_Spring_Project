@@ -1,8 +1,15 @@
 package com.cydeo.repository;
 
 import com.cydeo.entity.Movie;
+import com.cydeo.enums.MovieState;
+import com.cydeo.enums.MovieType;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
+
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface MovieRepository extends JpaRepository<Movie, Long> {
@@ -10,24 +17,24 @@ public interface MovieRepository extends JpaRepository<Movie, Long> {
     // ------------------- DERIVED QUERIES ------------------- //
 
     //Write a derived query to read a movie with a name
-
+    Optional<Movie> findByName(String name);
 
     //Write a derived query to list all movies between a range of prices
-
+    List<Movie> findAllByPriceBetween(int price1, int price2);
 
     //Write a derived query to list all movies where duration exists in the specific list of duration
-
+    List<Movie> findAllByDurationBetween(int time1, int time2);
 
     //Write a derived query to list all movies with higher than a specific release date
-
+    List<Movie> findAllByReleaseDateAfter(LocalDate date);
 
     //Write a derived query to list all movies with a specific state and type
-
+    List<Movie> findAllByStateAndType(MovieState state, MovieType type);
 
     // ------------------- JPQL QUERIES ------------------- //
 
-    //Write a JPQL query to list all movies between a range of prices
-
+    //Write a JPQL query to list all movies between a range of prices\
+    List<Movie> getAllMoviesBetweenPriceRange()
 
     //Write a JPQL query that returns all movie names
 
