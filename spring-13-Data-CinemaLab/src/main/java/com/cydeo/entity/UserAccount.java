@@ -6,6 +6,7 @@ import lombok.Setter;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -19,6 +20,7 @@ public class UserAccount extends BaseEntity {
     private String password;
 
     @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "account_details_id")
     private AccountDetails accountDetails;
 
     @Override

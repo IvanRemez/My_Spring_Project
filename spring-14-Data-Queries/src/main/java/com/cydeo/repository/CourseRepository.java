@@ -14,8 +14,8 @@ public interface CourseRepository extends JpaRepository<Course, Long> {
 // Find all courses by category (SELECT * FROM courses WHERE category = ...)
     List<Course> findAllByCategory(String category);
 
-// Find all courses by category AND order by name
-    List<Course> findAllByCategoryAndOrderByName(String category);
+// Find all courses by category and order by name
+    List<Course> findAllByCategoryOrderByName(String category);
 
 // Return true if a course with name "" exists
     boolean existsByName(String name);
