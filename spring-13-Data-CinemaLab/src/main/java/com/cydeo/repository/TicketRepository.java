@@ -32,11 +32,11 @@ public interface TicketRepository extends JpaRepository<Ticket, Long> {
 
     //Write a JPQL query that returns all tickets are bought from a specific user
     @Query("SELECT t FROM Ticket t WHERE t.userAccount.id = ?1")
-    List<Ticket> getAllTicketsByUserAccount(Long userId);
+    List<Ticket> fetchAllTicketsByUserAccount(Long userId);
 
     //Write a JPQL query that returns all tickets between a range of dates
     @Query("SELECT t FROM Ticket t WHERE t.dateTime BETWEEN ?1 AND ?2")
-    List<Ticket> getAllTicketsByDateTimeBetween(LocalDateTime dateTime1, LocalDateTime dateTime2);
+    List<Ticket> fetchAllTicketsBetweenRangeOfDateTimes(LocalDateTime dateTime1, LocalDateTime dateTime2);
 
     // ------------------- Native QUERIES ------------------- //
 
@@ -71,6 +71,6 @@ public interface TicketRepository extends JpaRepository<Ticket, Long> {
             "WHERE ua.username ILIKE concat('%', ?1, '%') " +
             "OR ad.name ILIKE concat('%', ?1, '%') " +
             "OR m.name ILIKE concat('%', ?1, '%')", nativeQuery = true)
-    List<Ticket> fetchAllTicketsByUsernameOrAccountNameOrMovieName(String searchValue);
+    List<Ticket> retrieveAllBySearchCriteria(String searchValue);
 
 }

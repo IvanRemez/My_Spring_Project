@@ -42,7 +42,7 @@ public interface MovieRepository extends JpaRepository<Movie, Long> {
 
     //Write a JPQL query that returns all movie names
     @Query("SELECT m.name FROM Movie m")
-    List<String> getAllMovieNames();
+    List<String> fetchAllMovieNames();
 
     // ------------------- Native QUERIES ------------------- //
 
@@ -51,7 +51,7 @@ public interface MovieRepository extends JpaRepository<Movie, Long> {
     Optional<Movie> fetchMovieByName(String name);
 
     //Write a native query that return the list of movies in a specific range of prices
-    @Query(value = "SELECT * FROM movie WHERE price BETWEEN ?! AND ?2", nativeQuery = true)
+    @Query(value = "SELECT * FROM movie WHERE price BETWEEN ?1 AND ?2", nativeQuery = true)
     List<Movie> fetchByPriceRange(BigDecimal price1, BigDecimal price2);
 
     //Write a native query to return all movies where duration exists in the range of duration
