@@ -54,4 +54,22 @@ public class CourseController_ResponseEntity {
                 .header("Operation", "Create")
                 .body(courseService.createCourse(course));
     }
+
+    @DeleteMapping("{id}")
+    public ResponseEntity<Void> deleteCourseById(@PathVariable("id") long courseId) {
+        // ^^ still need to return ResponseEntity, just empty (Void)
+        courseService.deleteCourseById(courseId);
+
+        return ResponseEntity.noContent().build();
+                            // ^^ empty Response
+    }
+
+    @PutMapping("{id}")
+    public ResponseEntity<Void> updateCourse(@PathVariable("id") long courseId,
+                                             @RequestBody CourseDTO course) {
+
+        courseService.updateCourse(courseId, course);
+
+        return ResponseEntity.noContent().build();  // also empty Response
+    }
 }
