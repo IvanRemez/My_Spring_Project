@@ -1,11 +1,10 @@
 
 package com.cydeo.dto;
 
-import java.util.LinkedHashMap;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import javax.annotation.Generated;
-
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -15,16 +14,16 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-        "data",
-        "total",
-        "page",
-        "limit"
+    "data",
+    "total",
+    "page",
+    "limit"
 })
 @Generated("jsonschema2pojo")
 public class Employee {
 
     @JsonProperty("data")
-    private List<Datum> data;
+    private List<Datum> data = null;
     @JsonProperty("total")
     private Integer total;
     @JsonProperty("page")
@@ -32,7 +31,7 @@ public class Employee {
     @JsonProperty("limit")
     private Integer limit;
     @JsonIgnore
-    private Map<String, Object> additionalProperties = new LinkedHashMap<String, Object>();
+    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     @JsonProperty("data")
     public List<Datum> getData() {

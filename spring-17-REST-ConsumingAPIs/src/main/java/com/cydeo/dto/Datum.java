@@ -1,10 +1,9 @@
 
 package com.cydeo.dto;
 
-import java.util.LinkedHashMap;
+import java.util.HashMap;
 import java.util.Map;
 import javax.annotation.Generated;
-
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -14,11 +13,11 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-        "id",
-        "title",
-        "firstName",
-        "lastName",
-        "picture"
+    "id",
+    "title",
+    "firstName",
+    "lastName",
+    "picture"
 })
 @Generated("jsonschema2pojo")
 public class Datum {
@@ -34,7 +33,7 @@ public class Datum {
     @JsonProperty("picture")
     private String picture;
     @JsonIgnore
-    private Map<String, Object> additionalProperties = new LinkedHashMap<String, Object>();
+    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     @JsonProperty("id")
     public String getId() {
