@@ -11,17 +11,17 @@ import org.springframework.web.client.RestTemplate;
 @EnableFeignClients
 public class Spring17RestConsumingApIsApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(Spring17RestConsumingApIsApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(Spring17RestConsumingApIsApplication.class, args);
+    }
 
-	@Bean
-	public RestTemplate restTemplate() {
-		return new RestTemplate();
-	}
+    @Bean
+    public RestTemplate restTemplate() {
+        return new RestTemplate();
+    }
 
-	@Bean
-	public ModelMapper modelMapper() {
-		return new ModelMapper();
-	}
+    @Bean
+    public ModelMapper modelMapper() {
+        return new ModelMapper();
+    }
 }
