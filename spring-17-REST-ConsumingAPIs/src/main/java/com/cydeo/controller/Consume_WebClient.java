@@ -16,6 +16,7 @@ import reactor.core.publisher.Mono;
 public class Consume_WebClient {
 
     private WebClient webClient = WebClient.builder().baseUrl("http://localhost:8080").build();
+        // consuming your own API endpoints running on your local server ^^
 
     private final MovieCinemaService movieCinemaService;
     private final GenreService genreService;
@@ -25,7 +26,7 @@ public class Consume_WebClient {
         this.genreService = genreService;
     }
 
-    @GetMapping("/flux-movie-cinemas")
+    @GetMapping("/flux-movie-cinemas")      // localhost:8080/flux-movie-cinemas
     public Flux<MovieCinemaDTO> readAllCinemaFlux(){
 
         return Flux.fromIterable(movieCinemaService.findAll());
