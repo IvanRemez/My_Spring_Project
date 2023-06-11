@@ -1,5 +1,6 @@
 package com.cydeo.service.impl;
 
+import com.cydeo.client.CountryApiClient;
 import com.cydeo.client.WeatherApiClient;
 import com.cydeo.dto.AddressDTO;
 import com.cydeo.dto.weather.WeatherDTO;
@@ -23,11 +24,13 @@ public class AddressServiceImpl implements AddressService {
     private final AddressRepository addressRepository;
     private final MapperUtil mapperUtil;
     private final WeatherApiClient weatherApiClient;
+    private final CountryApiClient countryApiClient;
 
-    public AddressServiceImpl(AddressRepository addressRepository, MapperUtil mapperUtil, WeatherApiClient weatherApiClient) {
+    public AddressServiceImpl(AddressRepository addressRepository, MapperUtil mapperUtil, WeatherApiClient weatherApiClient, CountryApiClient countryApiClient) {
         this.addressRepository = addressRepository;
         this.mapperUtil = mapperUtil;
         this.weatherApiClient = weatherApiClient;
+        this.countryApiClient = countryApiClient;
     }
 
     @Override
@@ -48,8 +51,16 @@ public class AddressServiceImpl implements AddressService {
     // we will get current temp. and set based on city
         addressDTO.setCurrentTemperature(retrieveTempByCity(addressDTO.getCity())
                 .getCurrent().getTemperature());
+    // we will get flag link based on the country provided
+        addressDTO.setFlag(retrieveFlagByCountry(addressDTO.getCountry()));
 
         return addressDTO;
+    }
+
+    private String retrieveFlagByCountry(String country) {
+
+        return countryApiClient.getCountryInfo(country).get(0).getFlags().getPng();
+        // since the API returns a list of countries, ^^ need to get our country first
     }
 
     private WeatherDTO retrieveTempByCity(String city) {
