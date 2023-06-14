@@ -17,6 +17,7 @@ public class CourseController {
         this.courseService = courseService;
     }
 
+    @LoggingAnnotation
     @GetMapping
     public List<CourseDTO> getAllCourses() {
 //        throw new RuntimeException("My Exception");
@@ -41,6 +42,7 @@ public class CourseController {
         return courseService.createCourse(course);
     }
 
+    @LoggingAnnotation
     @PutMapping("/{id}")
     public void updateCourse(@PathVariable("id") Long courseId, @RequestBody CourseDTO course) {
         courseService.updateCourse(courseId, course);
