@@ -26,15 +26,15 @@ public class CalculatorParameterizedTest {
         Assertions.assertFalse(arg.isEmpty());
     }
 
+    static String[] stringProvider() {
+        return new String[]{"Java", "JS", "TS"};
+    }
+
     @ParameterizedTest
     @MethodSource("stringProvider")
     void testCase4(String arg) {
         Assertions.assertFalse(arg.isEmpty());
         // tests run for each String in stringProvider Factory Method
-    }
-
-    static String[] stringProvider() {
-        return new String[]{"Java", "JS", "TS"};
     }
 
     @ParameterizedTest
