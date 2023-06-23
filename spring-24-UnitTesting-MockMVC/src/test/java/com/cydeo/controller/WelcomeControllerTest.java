@@ -10,6 +10,7 @@ import org.springframework.test.web.servlet.RequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @WebMvcTest(WelcomeController.class)
 public class WelcomeControllerTest {
@@ -32,6 +33,20 @@ public class WelcomeControllerTest {
         assertEquals(200, result.getResponse().getStatus());
         // ^^ checking if status equals the expected 200
         assertEquals("welcome", result.getResponse().getContentAsString());
+
+    }
+
+    @Test
+    void welcome_Test2() throws Exception {
+
+        RequestBuilder request = MockMvcRequestBuilders
+                .get("/welcome")
+                .accept(MediaType.APPLICATION_JSON);
+
+        mvc.perform(request)
+                .andExpect(status().isOk())
+                .andExpect(content().string("welcome"))
+                .andReturn();
 
     }
 
